@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:Notepad"
         xmlns:Properties="clr-namespace:Notepad.Properties" x:Name="MainWindow1" x:Class="Notepad.MainWindow"
         mc:Ignorable="d"
-        Title="Jun's Notepad" Height="350" Width="525">
+        Title="Jun's Notepad" Height="350" Width="500">
     <Grid>
-        <TextBox AcceptsReturn ="True" AcceptsTab="True" x:Name="textBox" TextWrapping="Wrap" Margin="0,20,0,0"/>
+        <TextBox AcceptsReturn ="True" AcceptsTab="True" x:Name="textBox" TextWrapping="Wrap" Margin="0,20,0,16" BorderThickness="0,0,0,1"/>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Click="menuNew_Click" />
@@ -19,5 +19,6 @@
                 <MenuItem Header="_Exit" Click="menuClose_Click"/>
             </MenuItem>
         </Menu>
+        <TextBlock x:Name="textBlock" TextWrapping="Wrap" TextAlignment="Right" Margin="5,299,5,0" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

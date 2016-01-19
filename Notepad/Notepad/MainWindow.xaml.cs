@@ -25,9 +25,10 @@ namespace Notepad
         public MainWindow()
         {
             InitializeComponent();
+            textBlock.Text = fileName;
         }
 
-        public string fileName;
+        public string fileName = "untitled";
         public bool hasFileName = false;
 
         private void menuNew_Click(object sender, RoutedEventArgs e)
@@ -45,6 +46,7 @@ namespace Notepad
                 OpenFile(menuOpen.FileName);
                 fileName = menuOpen.FileName;
                 hasFileName = true;
+                textBlock.Text = fileName;
             }
         }
 
@@ -58,6 +60,7 @@ namespace Notepad
                 File.WriteAllText(menuSaveAs.FileName, textBox.Text);
                 fileName = menuSaveAs.FileName;
                 hasFileName = true;
+                textBlock.Text = fileName;
             }
         }
 
@@ -76,6 +79,7 @@ namespace Notepad
                     File.WriteAllText(menuSaveAs.FileName, textBox.Text);
                     fileName = menuSaveAs.FileName;
                     hasFileName = true;
+                    textBlock.Text = fileName;
                 }
             }
         }

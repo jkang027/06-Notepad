@@ -39,10 +39,10 @@ namespace Notepad
 
             MainWindow newWindow = new MainWindow();
             newWindow.Show();
-            newWindow.OpenFile(menuSaveAs.FileName);
-
             newWindow.fileName = menuSaveAs.FileName;
+            newWindow.OpenFile(newWindow.fileName);
             newWindow.hasFileName = true;
+            newWindow.textBlock.Text = newWindow.fileName;
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
