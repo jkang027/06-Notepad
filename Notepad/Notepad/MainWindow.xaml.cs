@@ -27,10 +27,13 @@ namespace Notepad
             InitializeComponent();
         }
 
+        public string fileName;
+        public bool hasFileName = false;
+
         private void menuNew_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow menuNew = new MainWindow();
-            menuNew.Show();
+            Window1 saveNewFilePrompt = new Window1();
+            saveNewFilePrompt.Show();
         }
 
         private void menuOpen_Click(object sender, RoutedEventArgs e)
@@ -38,20 +41,53 @@ namespace Notepad
             OpenFileDialog menuOpen = new OpenFileDialog();
             menuOpen.Filter = "Text files (recommended) (*.txt)|*.txt| All files (*.*)|*.*";
             if (menuOpen.ShowDialog() == true)
-                textBox.Text = File.ReadAllText(menuOpen.FileName);
+            {
+                OpenFile(menuOpen.FileName);
+                fileName = menuOpen.FileName;
+                hasFileName = true;
+            }
+        }
+
+        private void menuSaveAs_Click(object sender, RoutedEventArgs e)
+        {
+
+            SaveFileDialog menuSaveAs = new SaveFileDialog();
+            menuSaveAs.Filter = "Text file (*.txt)|*.txt";
+            if (menuSaveAs.ShowDialog() == true)
+            {
+                File.WriteAllText(menuSaveAs.FileName, textBox.Text);
+                fileName = menuSaveAs.FileName;
+                hasFileName = true;
+            }
         }
 
         private void menuSave_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog menuSave = new SaveFileDialog();
-            menuSave.Filter = "Text file (*.txt)|*.txt";
-            if (menuSave.ShowDialog() == true)
-                File.WriteAllText(menuSave.FileName, textBox.Text);
+            if (hasFileName)
+            {
+                File.WriteAllText(fileName, textBox.Text);
+            }
+            else
+            {
+                SaveFileDialog menuSaveAs = new SaveFileDialog();
+                menuSaveAs.Filter = "Text file (*.txt)|*.txt";
+                if (menuSaveAs.ShowDialog() == true)
+                {
+                    File.WriteAllText(menuSaveAs.FileName, textBox.Text);
+                    fileName = menuSaveAs.FileName;
+                    hasFileName = true;
+                }
+            }
         }
 
         private void menuClose_Click(object sender, RoutedEventArgs e)
         {
             MainWindow1.Close();
+        }
+
+        public void OpenFile(string fileName)
+        {
+            textBox.Text = File.ReadAllText(fileName);
         }
     }
 }
