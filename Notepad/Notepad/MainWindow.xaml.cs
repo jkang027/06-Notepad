@@ -48,5 +48,10 @@ namespace Notepad
             if (menuSave.ShowDialog() == true)
                 File.WriteAllText(menuSave.FileName, textBox.Text);
         }
+
+        private void menuClose_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow1.Close();
+        }
     }
 }

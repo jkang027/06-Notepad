@@ -14,6 +14,8 @@
                 <MenuItem Header="_New" Click="menuNew_Click" />
                 <MenuItem Header="_Open" Click="menuOpen_Click"/>
                 <MenuItem Header="_Save" Click="menuSave_Click"/>
+                <Separator />
+                <MenuItem Header="_Exit" Click="menuClose_Click"/>
             </MenuItem>
         </Menu>
     </Grid>
